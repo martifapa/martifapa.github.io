@@ -1,0 +1,36 @@
+{
+    "projects": [
+        {
+            "title": "Portfolio",
+            "description": "A static website to give some information about me and showcase some of my programming projects",
+            "code": "",
+            "link": "",
+            "hero": "",
+            "stack": ["JavaScript"]
+        },
+        {
+            "title": "Baby logger",
+            "description": "",
+            "code": "",
+            "link": "",
+            "hero": "moon.jpg",
+            "stack": ["TypeScript", "React", "Redux", "Node", "Express", "Postgres", "Recharts"]
+        },
+        {
+            "title": "Data dashboard",
+            "description": "",
+            "code": "",
+            "link": "",
+            "hero": "",
+            "stack": ["TypeScript", "React", "Redux", "Node", "Express", "ChartJs"]
+        },
+        {
+            "title": "Lawyer's landing page",
+            "description": "",
+            "code": "",
+            "link": "",
+            "hero": "",
+            "stack": ["JavaScript"]
+        }
+    ]
+}
