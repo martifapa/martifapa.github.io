@@ -32,4 +32,68 @@ Object.keys(technologies).forEach(tech => {
     card.appendChild(techP);
 
     techStack.appendChild(card);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('/projects/projects.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch projects');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const projects = data.projects;
+            displayProjects(projects);
+        })
+        .catch(error => {
+            console.error(error);
+        });
 })
+
+const displayProjects = (projects) => {
+    const container = document.querySelector('.projects-grid');
+
+    projects.forEach(project => {
+        const projectDiv = document.createElement('div');
+        projectDiv.classList.add('project');
+
+        const imgWrapper = document.createElement('div');
+        imgWrapper.classList.add('header-img-wrapper');
+        const img = document.createElement('img');
+        img.src = `/images/${project.hero}`;
+        img.alt = 'Project header image';
+        imgWrapper.appendChild(img);
+        
+        const h3 = document.createElement('h3');
+        h3.textContent = project.title;
+
+        const p = document.createElement('p');
+        p.textContent = project.description;
+
+        const projectLinksDiv = document.createElement('div');
+        projectLinksDiv.classList.add('project-links');
+
+        const codeProjectLinkDiv = document.createElement('div');
+        codeProjectLinkDiv.classList.add('project-link');
+        const code = document.createElement('a');
+        code.textContent = 'CODE';
+        codeProjectLinkDiv.appendChild(code);
+
+        const linkProjectLinkDiv = document.createElement('div');
+        linkProjectLinkDiv.classList.add('project-link');
+        const link = document.createElement('a');
+        link.textContent = 'LINK';
+        linkProjectLinkDiv.appendChild(link);
+
+        projectLinksDiv.appendChild(codeProjectLinkDiv);
+        projectLinksDiv.appendChild(linkProjectLinkDiv);
+
+        projectDiv.appendChild(imgWrapper);
+        projectDiv.appendChild(h3);
+        projectDiv.appendChild(p);
+        projectDiv.appendChild(projectLinksDiv);
+
+        container.appendChild(projectDiv);
+    });
+}

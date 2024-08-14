@@ -2,15 +2,15 @@
     "projects": [
         {
             "title": "Portfolio",
-            "description": "A static website to give some information about me and showcase some of my programming projects",
+            "description": "A static website to give some information about me and showcase some of my programming projects.",
             "code": "",
             "link": "",
-            "hero": "",
+            "hero": "portfolio-bg.jpg",
             "stack": ["JavaScript"]
         },
         {
             "title": "Baby logger",
-            "description": "",
+            "description": "A web app for tracking a baby's feed sessions, diaper changes and sleep durations, with built-in statistics. Features multiple shared accounts.",
             "code": "",
             "link": "",
             "hero": "moon.jpg",
@@ -18,7 +18,7 @@
         },
         {
             "title": "Data dashboard",
-            "description": "",
+            "description": "A dashboard with several custom-graphs to check performance and quality of data scraped.",
             "code": "",
             "link": "",
             "hero": "",
@@ -26,10 +26,10 @@
         },
         {
             "title": "Lawyer's landing page",
-            "description": "",
+            "description": "A static website for a lawyer in which to publicize her services online.",
             "code": "",
             "link": "",
-            "hero": "",
+            "hero": "law-bg.jpg",
             "stack": ["JavaScript"]
         }
     ]
