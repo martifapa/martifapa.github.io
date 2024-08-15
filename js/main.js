@@ -21,7 +21,7 @@ Object.keys(technologies).forEach(tech => {
     const imgWrapper = document.createElement('div');
     imgWrapper.classList.add('card-img-wrapper');
     const img = document.createElement('img');
-    img.src = `images/${technologies[tech]}`;
+    img.src = `images/techstack/${technologies[tech]}`;
 
     const techP = document.createElement('p');
     techP.textContent = tech;
@@ -33,6 +33,61 @@ Object.keys(technologies).forEach(tech => {
 
     techStack.appendChild(card);
 });
+
+const possibleExtensions = ['.svg', '.png', '.jpeg', '.jpg'];
+
+const displayProjectStack = async (project) => {
+    const stack = project.stack;
+    const projectInfo = document.querySelector('.info');
+    projectInfo.classList.remove('active');
+    const projectStack = document.querySelector('.stack-details');
+    projectStack.classList.add('active')
+    projectStack.textContent = '';
+    
+    for (const tech of stack) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+    
+        const imgWrapper = document.createElement('div');
+        imgWrapper.classList.add('card-img-wrapper');
+        const img = document.createElement('img');
+        const imgSrc = await findFile(tech, possibleExtensions);
+        img.src = imgSrc;
+    
+        const techP = document.createElement('p');
+        techP.textContent = tech;
+    
+        imgWrapper.appendChild(img);
+    
+        card.appendChild(imgWrapper);
+        card.appendChild(techP);
+    
+        projectStack.appendChild(card);
+    };
+}
+
+const checkFileExists = async (filename) => {
+    return fetch(filename, { method: 'HEAD' })
+        .then(response => {
+            if (response.ok) {
+                return filename;
+            }
+            return null;
+        })
+        .catch(() => null);
+}
+
+const findFile = async (baseName, extensions) => {
+    for (const extension of extensions) {
+        const filename = `images/techstack/${baseName.toLowerCase()}${extension}`;
+        const foundFile = await checkFileExists(filename);
+        if (foundFile) {
+            return foundFile;
+        }
+    }
+    return null;
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     fetch('/projects/projects.json')
@@ -95,5 +150,11 @@ const displayProjects = (projects) => {
         projectDiv.appendChild(projectLinksDiv);
 
         container.appendChild(projectDiv);
+
+        projectDiv.addEventListener('click', () => {
+            displayProjectStack(project);
+            console.log(project);
+        });
     });
 }
+

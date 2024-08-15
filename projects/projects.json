@@ -14,7 +14,7 @@
             "code": "",
             "link": "",
             "hero": "moon.jpg",
-            "stack": ["TypeScript", "React", "Redux", "Node", "Express", "Postgres", "Recharts"]
+            "stack": ["TypeScript", "React", "Redux", "Node", "Expressjs", "Postgres", "Recharts"]
         },
         {
             "title": "Data dashboard",
@@ -22,7 +22,7 @@
             "code": "",
             "link": "",
             "hero": "",
-            "stack": ["TypeScript", "React", "Redux", "Node", "Express", "ChartJs"]
+            "stack": ["TypeScript", "React", "Redux", "Node", "Expressjs", "ChartJs"]
         },
         {
             "title": "Lawyer's landing page",

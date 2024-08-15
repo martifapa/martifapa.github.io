@@ -114,29 +114,48 @@ main {
 
 /* project details */
 .project-details {
+    position: relative;
     max-height: 90px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .info {
+    position: absolute;
+    margin: auto;
+    transition: transform .2s;
+}
+
+.info.active {
     color: var(--medium-grey);
 }
 
+.info:not(.active) {
+    background-color: rebeccapurple;
+    transform: translateY(70px);
+}
+
 .stack-details {
+    position: absolute;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 10px;
     padding: 10px 24px;
+    transform: translateY(-70px);
+    transition: transform .3s;
+    transition-delay: .1s;
 }
 
-.hidden {
-    display: none;
+.stack-details.active {
+    transform: translateY(0);
 }
+
 
 /* projects grid */
 .projects-grid {
