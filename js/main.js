@@ -38,11 +38,15 @@ const possibleExtensions = ['.svg', '.png', '.jpeg', '.jpg'];
 
 const displayProjectStack = async (project) => {
     const stack = project.stack;
-    const projectInfo = document.querySelector('.info');
-    projectInfo.classList.remove('active');
-    const projectStack = document.querySelector('.stack-details');
-    projectStack.classList.add('active')
-    projectStack.textContent = '';
+    const projectDetails = document.querySelector('.project-details');
+
+    const oldProjectStack = document.querySelector('.stack-details');
+    oldProjectStack.classList.remove('up');
+    oldProjectStack.classList.add('down');
+    
+    const newProjectStack = document.createElement('div');
+    newProjectStack.classList.add('stack-details');
+    newProjectStack.classList.add('up');
     
     for (const tech of stack) {
         const card = document.createElement('div');
@@ -62,8 +66,17 @@ const displayProjectStack = async (project) => {
         card.appendChild(imgWrapper);
         card.appendChild(techP);
     
-        projectStack.appendChild(card);
+        newProjectStack.appendChild(card);
     };
+
+    setTimeout(() => {
+        newProjectStack.classList.remove('up');
+    }, 100);
+
+    projectDetails.appendChild(newProjectStack);
+    setTimeout(() => {
+        oldProjectStack.remove();
+    }, 400);
 }
 
 const checkFileExists = async (filename) => {
@@ -132,17 +145,42 @@ const displayProjects = (projects) => {
         const codeProjectLinkDiv = document.createElement('div');
         codeProjectLinkDiv.classList.add('project-link');
         const code = document.createElement('a');
+        if (project.code.length > 0) {
+            codeProjectLinkDiv.classList.add('active');
+            code.href = project.code;
+            code.target = '_blank';
+            code.rel = 'noopener noreferrer';
+        };
         code.textContent = 'CODE';
         codeProjectLinkDiv.appendChild(code);
 
         const linkProjectLinkDiv = document.createElement('div');
         linkProjectLinkDiv.classList.add('project-link');
         const link = document.createElement('a');
+        if (project.link.length > 0) {
+            linkProjectLinkDiv.classList.add('active');
+            link.href = project.link;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+        };
         link.textContent = 'LINK';
         linkProjectLinkDiv.appendChild(link);
 
+        const stackProjectLinkDiv = document.createElement('div');
+        stackProjectLinkDiv.classList.add('project-link');
+        if (project.stack.length > 0) {
+            stackProjectLinkDiv.classList.add('active');
+        };
+        const stack = document.createElement('p');
+        stack.textContent = 'STACK';
+        stackProjectLinkDiv.appendChild(stack);
+        stackProjectLinkDiv.addEventListener('click', () =>
+            displayProjectStack(project)
+        );
+
         projectLinksDiv.appendChild(codeProjectLinkDiv);
         projectLinksDiv.appendChild(linkProjectLinkDiv);
+        projectLinksDiv.appendChild(stackProjectLinkDiv);
 
         projectDiv.appendChild(imgWrapper);
         projectDiv.appendChild(h3);
@@ -151,10 +189,10 @@ const displayProjects = (projects) => {
 
         container.appendChild(projectDiv);
 
-        projectDiv.addEventListener('click', () => {
-            displayProjectStack(project);
-            console.log(project);
-        });
+        // projectDiv.addEventListener('click', () => {
+        //     displayProjectStack(project);
+        //     console.log(project);
+        // });
     });
 }
 
