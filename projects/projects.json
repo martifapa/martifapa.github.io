@@ -18,10 +18,10 @@
         },
         {
             "title": "Data dashboard",
-            "description": "A dashboard with several custom-graphs to check performance and quality of data scraped.",
+            "description": "A client-view dashboard with several custom-graphs to check performance and quality of data scraped.",
             "code": "",
             "link": "https://abasil.es/",
-            "hero": "",
+            "hero": "dataDashboard.jpg",
             "stack": ["TypeScript", "React", "Redux", "Node", "Expressjs", "ChartJs"]
         },
         {

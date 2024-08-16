@@ -146,7 +146,7 @@ const displayProjects = (projects) => {
         codeProjectLinkDiv.classList.add('project-link');
         const code = document.createElement('a');
         if (project.code.length > 0) {
-            codeProjectLinkDiv.classList.add('active');
+            codeProjectLinkDiv.classList.add('enabled');
             code.href = project.code;
             code.target = '_blank';
             code.rel = 'noopener noreferrer';
@@ -158,7 +158,7 @@ const displayProjects = (projects) => {
         linkProjectLinkDiv.classList.add('project-link');
         const link = document.createElement('a');
         if (project.link.length > 0) {
-            linkProjectLinkDiv.classList.add('active');
+            linkProjectLinkDiv.classList.add('enabled');
             link.href = project.link;
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
@@ -169,7 +169,7 @@ const displayProjects = (projects) => {
         const stackProjectLinkDiv = document.createElement('div');
         stackProjectLinkDiv.classList.add('project-link');
         if (project.stack.length > 0) {
-            stackProjectLinkDiv.classList.add('active');
+            stackProjectLinkDiv.classList.add('enabled');
         };
         const stack = document.createElement('p');
         stack.textContent = 'STACK';
