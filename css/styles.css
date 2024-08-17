@@ -1,9 +1,11 @@
 :root {
-    --green-dark: #182c25;
-    --green-medium: #306844;
-    --green-light: #e8fee8;
-    --orange-light: #ff9a00;
-    --orange-medium: #ff7400;
+    --green-dark: #1f3c37;
+    --green-medium: #28382d;
+    --green-light: #445c46;
+    --orange-light: #f3900e;
+    --orange-medium: #f8641e;
+    --orange-dark: #ed4f05;
+    --red: #fe0000;
     --dark: #303030;
     --medium-grey: #c9c9c9;
     --light-grey: #f7f7f7;
@@ -44,14 +46,51 @@ main {
 }
 
 .profile-pic-wrapper {
-    background-color: var(--orange-light);
+    position: relative;
     height: 200px;
     width: 200px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid var(--orange-medium);
+    background-color: var(--green-dark);
+    /* border: 2px solid black; */
+}
+
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.profile-pic-wrapper::after {
+    filter: blur(.2rem);
+}
+
+.profile-pic-wrapper::before,
+.profile-pic-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: -0.5rem;
+    z-index: -1;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--orange-light),
+        var(--orange-light),
+        var(--orange-dark),
+        var(--orange-dark),
+        var(--red),
+        var(--orange-dark),
+        var(--orange-dark),
+        var(--orange-light),
+        var(--orange-light));
+    border-radius: 50%;
+    animation: rotation 3s linear infinite;
+}
+
+@keyframes rotation {
+    0% { --gradient-angle: 0deg; }
+    to { --gradient-angle: 360deg; }
 }
 
 .profile-pic-wrapper img {
@@ -266,11 +305,20 @@ main {
     .stack-details {
         flex-wrap: nowrap;
         justify-content: flex-start;
+        /* box-shadow: 0 3px 2px var(--medium-grey); */
     }
 
     .projects-grid {
-        height: calc(100vh - 50px);
-        padding: 0 8px;
+        padding: 0 44px 30px 44px;
         overflow: visible;
+        gap: 30px;
+    }
+
+    .profile-pic-wrapper {
+        z-index: 1;
+    }
+
+    .profile-pic-wrapper img {
+        background-color: var(--green-dark);
     }
 }
