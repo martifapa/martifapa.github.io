@@ -188,11 +188,35 @@ const displayProjects = (projects) => {
         projectDiv.appendChild(projectLinksDiv);
 
         container.appendChild(projectDiv);
-
-        // projectDiv.addEventListener('click', () => {
-        //     displayProjectStack(project);
-        //     console.log(project);
-        // });
     });
 }
 
+const dropdownCurrentOption = document.querySelector('.selected-view');
+const toggleViewDropdown = () => {
+    dropdownContent.classList.toggle('active');
+}
+
+const selectedViewText = document.querySelector('.selected-view');
+const setSelectedViewText = (text) => {
+    selectedViewText.textContent = text;
+}
+const dropdownContent = document.querySelector('.dropdown-content');
+dropdownCurrentOption.addEventListener('click', () => {
+    toggleViewDropdown();
+});
+
+const overlay = document.querySelector('.overlay');
+
+const standardView = document.querySelector('#standard-view');
+standardView.addEventListener('click', () =>{
+    overlay.classList.remove('active');
+    setSelectedViewText(standardView.textContent);
+    toggleViewDropdown();
+});
+
+const recruitersView = document.querySelector('#recruiters-view');
+recruitersView.addEventListener('click', () =>{
+    overlay.classList.add('active');
+    setSelectedViewText(recruitersView.textContent);
+    toggleViewDropdown();
+});

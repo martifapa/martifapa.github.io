@@ -34,6 +34,8 @@ main {
     padding: 50px 14px;
     background-color: var(--green-dark);
     color: var(--white);
+    display: flex;
+    flex-direction: column;
 }
 
 /* profile section */
@@ -135,6 +137,66 @@ main {
     justify-content: center;
     row-gap: 20px;
     column-gap: 12px;
+}
+
+
+/* view section */
+.view {
+    width: max-content;
+    margin-top: auto;
+    margin-inline: auto;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid var(--green-light);
+    border-radius: 4px;
+}
+
+.dropdown {
+    position: relative;
+    --width: 125px;
+}
+
+.selected-view {
+    width: var(--width);
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    bottom: calc(1.4rem + 8px);
+    max-height: 0;
+    width: var(--width);
+    position: absolute;
+    background-color: var(--green-light);
+    border-radius: 4px 4px 0 0;
+    pointer-events: none;
+    overflow: hidden;
+    transition: max-height .2s ease-in-out,
+        padding-top .2s ease-in-out,
+        padding-bottom .2s ease-in-out;
+}
+
+.dropdown-content.active {
+    max-height: 300px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    pointer-events: all;
+}
+
+.dropdown-content:not(.active) {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.dropdown-content p {
+    padding: 3px 12px;
+    cursor: pointer;
+}
+
+.dropdown-content p:hover {
+    background-color: var(--green-medium);
 }
 
 
@@ -272,6 +334,51 @@ main {
     color: var(--dark);
 }
 
+.overlay {
+    display: none;
+}
+
+.overlay.active {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay p {
+    font-size: 10rem;
+    font-weight: 600;
+    color: var(--red);
+    animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+    0%, 20% {
+        opacity: 1;
+    }
+    20.1%, 30% {
+        opacity: 0;
+    }
+    30.1%, 50% {
+        opacity: 1;
+    }
+    50.1%, 60% {
+        opacity: 0;
+    }
+    60.1%, 80% {
+        opacity: 1;
+    }
+    80.1%, 90% {
+        opacity: 0;
+    }
+    90.1%, 100% {
+        opacity: 1;
+    }
+}
 
 /* MEDIA QUERIES */
 @media (max-width: 785px) {
@@ -284,6 +391,10 @@ main {
         position: relative;
         width: 100%;
         height: 100vh;
+    }
+
+    .view {
+        display: none;
     }
 
     .projects {
