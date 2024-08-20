@@ -71,12 +71,12 @@ const displayProjectStack = async (project) => {
 
     setTimeout(() => {
         newProjectStack.classList.remove('up');
-    }, 100);
+    }, 50);
 
     projectDetails.appendChild(newProjectStack);
     setTimeout(() => {
         oldProjectStack.remove();
-    }, 400);
+    }, 350);
 }
 
 const checkFileExists = async (filename) => {
