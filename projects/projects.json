@@ -25,6 +25,14 @@
             "stack": ["TypeScript", "React", "Redux", "Node", "Expressjs", "ChartJs"]
         },
         {
+            "title": "GMAT buddy",
+            "description": "A GMAT assistant that can help you solve GMAT questions and give as many AI-generated explanations for the correct answers as you want.",
+            "code": "https://github.com/martifapa/gmat-buddy",
+            "link": "",
+            "hero": "gmat.jpg",
+            "stack": ["Typescript", "React", "Redux", "Node", "Expressjs", "Postgres"]
+        },
+        {
             "title": "Lawyer's landing page",
             "description": "A static website for a lawyer in which to publicize her services online.",
             "code": "",
