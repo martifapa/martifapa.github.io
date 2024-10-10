@@ -51,6 +51,10 @@ const displayProjectStack = async (project) => {
     for (const tech of stack) {
         const card = document.createElement('div');
         card.classList.add('card');
+
+        if (tech === 'Recharts') {
+            card.classList.add(tech.toLowerCase());
+        }
     
         const imgWrapper = document.createElement('div');
         imgWrapper.classList.add('card-img-wrapper');
