@@ -135,6 +135,16 @@ main {
     color: var(--orange-light);
 }
 
+.recharts {
+    p {
+        display: none;
+    }
+
+    .card-img-wrapper {
+        width: 100px;
+    }
+}
+
 /* tech-stack section */
 .tech-stack {
     display: flex;
@@ -209,6 +219,7 @@ main {
 /* PROJECTS */
 
 .projects {
+    max-height: 100vh;
     margin-left: max(360px, 25vw);
     flex: auto;
     display: flex;
@@ -228,6 +239,7 @@ main {
     justify-content: center;
     align-items: center;
     padding-top: 8px;
+    overflow: hidden;
 }
 
 .info {
@@ -259,7 +271,7 @@ main {
     gap: 10px;
     padding: 10px 24px;
     color: var(--dark);
-    transition: opacity .2s, transform .2s ease-out;
+    transition: opacity .2s, transform .3s ease-out;
     transition-delay: .1s;
 }
 
