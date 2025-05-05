@@ -164,7 +164,7 @@ main {
     display: flex;
     justify-content: center;
     gap: 8px;
-    border: 1px solid var(--green-light);
+    /* border: 1px solid var(--green-light); */
     border-radius: 4px;
 }
 
@@ -287,7 +287,7 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(325px, 400px));
     justify-content: center;
     align-content: flex-start;
-    gap: 20px;
+    gap: 30px;
     padding: 8px 0;
     overflow-y: auto;
 }
